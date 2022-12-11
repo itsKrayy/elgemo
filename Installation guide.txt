@@ -1,0 +1,20 @@
+#create folder
+#npm init -y
+#npm express ejs
+#npm i --save-dev nodemon dotenv
+
+//if you want to run your localhost server just type:
+   $npm run elgemo
+
+//continue working
+:Link
+https://www.youtube.com/watch?v=ILviQic0c8g
+https://www.youtube.com/watch?v=MW0WCAmI2UM
+https://www.codeinfoweb.com/2022/01/cool-login-form-with-html-css.html
+https://www.youtube.com/watch?v=-RCnNyD0L-s&list=WL&index=1&t=660s
+
+How to use Passport and MongoDB modules together:
+https://www.makeuseof.com/user-authentication-in-nodejs/
+
+Full Playlist of Reference(NOTE: DO NOT FOLLOW! MORE LIKE YOUTUBE WEBSITE):
+https://www.youtube.com/watch?v=rQIcIgvF6_U&list=PLsY8aWop1tAEh-NbTNQ0vYsdEUk2eeZaJ

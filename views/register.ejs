@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | Elgemo</title>
+
+  <!--Logo css-->
+	<link rel="icon" href="assets/logo.png" type="image/x-icon">
+	<!--Logo css-->
+
+  <link rel="stylesheet" href="css/style.css">
+   <!-- Font Awesome Cdn Link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>ELGEMO</h1>
+    <p>Welcome to Elgemo<br> Website</p>
+    <form action="/register" method="POST">
+      <input type="text" id="username" name="username" placeholder="Enter username" required>
+      <input type="email" id="email" name="email" placeholder="Enter email" required>
+      <input type="password" id="password" name="password" placeholder="Password" required>
+      <p class="recover">
+        <a href="#">Recover Password</a>
+      </p>
+      <button type="submit" >Register</button>
+    <closeform></closeform></form>
+    
+    <p class="or">
+      ----- or continue with -----
+    </p>
+    <div class="icons">
+      <i class="fab fa-google"></i>
+      <i class="fab fa-github"></i>
+      <i class="fab fa-facebook"></i>
+    </div>
+    <div class="not-member">
+      Already a member? <a href="/login">login</a>
+    </div>
+  </div>
+</body>
+</html>

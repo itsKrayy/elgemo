@@ -1,0 +1,33 @@
+<title>Frontpage | Elgemo</title>
+    
+    <%- include('include/header.ejs') %> <!-- GETS THE HEADER -->
+
+    <div class="top-content">
+        <h3>Browse All Movies</h3>
+    </div>
+    <main id="main">
+    <% for (var i = 0 ; i < movie.length ; i++) { %>
+        <div class="movie">
+
+            <a href="/frontpage/<%= movie[i]._id %>">
+                <img src="<%= movie[i].imgURL %>" alt="${title}"/>
+            </a>
+                <div class="movie-info">
+                <h3><%= movie[i].movieName %></h3>
+            </div>
+             <div class="overview">
+            <h3>Overview:</h3>
+            <%= movie[i].description %>
+                <button>
+                    save
+                </button>
+            </div>
+        </div>
+
+        <% } %>
+
+   </main>
+
+   <script src="js/frontpagejs.js"></script>
+</body>
+</html>

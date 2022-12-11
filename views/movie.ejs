@@ -1,0 +1,43 @@
+<title><%= movie.movieName %> | Elgemo</title>
+
+<%- include('include/header.ejs') %> <!-- GETS THE HEADER -->
+   <main id="main">
+
+    <div class="main-content">
+        <div class="movie-info">
+            
+            <div class="movie-img">
+                <img src="<%= movie.imgURL %>" alt="">
+            </div>
+            
+            <div class="movie.dets">
+                <div class="button-container">
+                    <button>save</button>
+                    <button>more</button>
+                </div>
+                <p><h3>Title: </h3><%= movie.movieName %></p>
+                <p><h3>Movie Description: </h3><%= movie.description %></p>
+            </div>
+
+            
+
+        </div>
+
+        <div class="movieiframe">
+            <iframe width="100%" height="90%" src="<%= movie.videoURL %>" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+        <h2>Watch <%= movie.movieName %> Trailer</h2>
+        <div class="iframe">
+            <iframe src="<%= movie.movieURL %>" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+
+    </div>
+
+   </main>
+   <script src="/js/frontpagejs.js"></script>
+</body>
+</html>
