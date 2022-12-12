@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto+Mono:wght@400;700&family=Source+Sans+Pro&display=swap');
 * {
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
@@ -152,7 +153,8 @@ body.open .background {
 }
 
 .navbar-logo {
-  height: 25px;
+  height: 40px;
+  cursor: pointer;
 }
 
 .navbar-burger {
@@ -183,7 +185,7 @@ body.open .navbar-burger {
   padding-left: 36px;
   width: 180px;
   font-size: 16px;
-  font-family: "Euclid Circular A";
+  font-family: "Poppins", sans-serif;
 }
 
 .navbar-search::placeholder {
@@ -215,7 +217,7 @@ body.open .menu {
 .menu > a {
   color: #f9f9f9;
   font-size: 32px;
-  font-family: "Euclid Circular A";
+  font-family: "Poppins", sans-serif;
   text-decoration: none;
 }
 
