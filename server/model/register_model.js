@@ -12,7 +12,9 @@ const reg_model = mongoose.Schema({
 
     password: {
         type: String
-    }
+    },
+
+    movies: [{type: String}]
 
 });
 

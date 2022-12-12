@@ -9,15 +9,17 @@
     <% for (var i = 0 ; i < movie.length ; i++) { %>
         <div class="movie">
 
-            <a href="/frontpage/<%= movie[i]._id %>">
-                <img src="<%= movie[i].imgURL %>" alt="${title}"/>
+            <a href="/frontpage/<%= movie[i].id %>">
+                <img src="<% movie[i].titleText.text %>" alt="<%= movie[i].titleText.text %>"/>
             </a>
                 <div class="movie-info">
-                <h3><%= movie[i].movieName %></h3>
+                <h3><%= movie[i].titleText.text %></h3>
             </div>
              <div class="overview">
-            <h3>Overview:</h3>
-            <%= movie[i].description %>
+                    <a href="/frontpage/<%= movie[i].id %>">
+                        <h3>Overview:</h3>
+                    </a>
+            <!-- <%= movie[i].description %> -->
                 <button>
                     save
                 </button>

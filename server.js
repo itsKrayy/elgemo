@@ -8,6 +8,7 @@ const app = express();
 const bcrypt = require("bcrypt") //Importing bcrpyt package
 const port = 3000; //Port
 const dotenv = require('dotenv');
+const axios = require('axios');
 const passport = require('passport-local'); //for login
 const flash = require('express-flash');
 const session = require('express-session');

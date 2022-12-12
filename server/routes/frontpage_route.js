@@ -10,7 +10,14 @@ frontpage_router.use(express.urlencoded({extended: false}))
 frontpage_router.get('/', frontpage_Controller.render);
 frontpage_router.post('/', frontpage_Controller.render);
 
-frontpage_router.get('/search' , (req , res) => {
+frontpage_router.get('/search' , frontpage_Controller.search);
+
+frontpage_router.get('/:id' , frontpage_Controller.view);
+
+
+
+//OLD CODE
+/* frontpage_router.get('/search' , (req , res) => {
 
     var search = req.query.search;
     console.log(search);
@@ -59,7 +66,7 @@ frontpage_router.get('/:id' , (req , res) => {
         })
 
 
-});
+}); */
 
 
 
