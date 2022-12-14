@@ -3,31 +3,9 @@ if (process.env.NODE_ENV !== 'production') {
    
 }
 
-
-//initalizing Express
 const express =  require('express');
-//const dotenv = require('dotenv');
-const login_router = express.Router();
-const passport = require('passport'); //for login
-const flash = require('express-flash');
-const session = require('express-session');
-
-//LOGIN CONFIG
-const initializePassport = require('../service/passport-config');
-initializePassport( passport , 
-    email => users.find(user => user.email === email)
-);
-
-//dotenv.config({path: '.env'})
-login_router.use(flash());
-login_router.use(session({
-    secret: process.env.SESSION_SECRET ,
-    resave: false ,
-    saveUninitialized: false
-}))
-
-login_router.use(passport.initialize());
-login_router.use(passport.session())
+const login_router = express.Router(); //initalizing Express
+const login_controller = require('../controller/login_controller'); //getting controller for Login
 
 //Renders login page
 login_router.get('/', ( req, res ) => {
@@ -35,10 +13,13 @@ login_router.get('/', ( req, res ) => {
 });
 
 //API
-login_router.post('' , passport.authenticate('local' , {
-    successRedirect: '/',
-    failureRedirect: '/login',
-    failureFlash: true
-}))
+login_router.post('/auth' , login_controller.auth);
+login_router.post('/logout' , (req , res) => {
+    //use passport logout
+    req.logout();
+    req.redirect('/login');
+});
+
+
 
 module.exports = { login_router } //exports router

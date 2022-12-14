@@ -89,7 +89,8 @@ button:hover{
 }
 .not-member{
   font-size: 0.8rem;
-  margin-top: 1.4rem;
+  margin-top: 2rem;
+  padding: 2px;
 }
 .not-member a{
   color: tomato;

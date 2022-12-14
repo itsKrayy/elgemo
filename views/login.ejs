@@ -5,10 +5,10 @@
   <title>Login | Elgemo</title>
 
   <!--Logo css-->
-	<link rel="icon" href="assets/logo.png" type="image/x-icon">
+	<link rel="icon" href="/assets/logo.png" type="image/x-icon">
 	<!--Logo css-->
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
    <!-- Font Awesome Cdn Link -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
@@ -16,28 +16,25 @@
   <div class="wrapper">
     <h1>ELGEMO</h1>
     <p>Welcome to Elgemo<br> Website</p>
-    <% if (messages.error) { %>
-      <%= messages.error %>
-      <% } %>
-    <form action="/frontpage" method="POST">
+   <!--  <form action="/auth/login" method="POST">
       <input type="text" name="email" id="email" placeholder="Enter email" required>
       <input type="password" name="password" id="email" placeholder="Password" required>
       <p class="recover">
-        <a href="#">Recover Password</a>
+      <a href="#">Recover Password</a> 
       </p>
       <button type="submit">Login</button>
-    <closeform></closeform></form>
+    <closeform></closeform></form> -->
     
-    <p class="or">
+    <!-- <p class="or">
       ----- or continue with -----
     </p>
-    <div class="icons">
-      <i class="fab fa-google"></i>
-      <i class="fab fa-github"></i>
+    <div class="icons"> -->
+      <a href="/auth/google"><i class="fab fa-google"></i>Sign in with Google</a>
+      <!-- <i class="fab fa-github"></i>
       <i class="fab fa-facebook"></i>
-    </div>
-    <div class="not-member">
-      Not a member? <a href="/register">Register Now</a>
+    </div>  -->
+    <div class="not-member"> 
+      Not a member? <a href="/auth/register">Register Now</a>
     </div>
   </div>
 </body>

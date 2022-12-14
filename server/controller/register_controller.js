@@ -1,5 +1,6 @@
 var usersCollection = require('../model/register_model'); //gets register model
 const bcrypt = require('bcrypt'); //imports Bycrypt module
+const passport = require('passport');
 
 
 
@@ -10,8 +11,32 @@ exports.create = async ( req , res ) => {
     if(!req.body){
         res.status(400).send({message: "Content Cannot be empty"});
         return;
-    }else
+    }else{
 
+    }
+
+    
+/* 
+    try {
+        const registerUser = await usersCollection.register(
+            { username: req.body.username},
+            { email: req.body.email },
+            req.body.password
+        );
+        if(registerUser){
+            passport.authenticate("local")(req , res , function(){
+                res.redirect('/login');
+            });
+        } else {
+            res.redirect('/register');
+        }
+    } catch (error) {
+        res.send(err);
+    } */
+
+
+    //OLD CODE FOR ADDING USERS
+/* 
     //new user
     try {
         // const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -37,5 +62,5 @@ exports.create = async ( req , res ) => {
             res.status(500).send({
                 message: err.message
             });
-        });
+        }); */
 };
