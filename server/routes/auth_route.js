@@ -9,6 +9,7 @@ auth_router.use(express.json());
 
 const login_controller = require('../controller/login_controller'); //getting controller for Login
 const register_controller = require('../controller/register_controller'); //gets register contoller
+const { ensureAuth , ensureGuest } = require('../middleware/auth');
 
 //GOOGLE ROUTES
 auth_router.get('/google',
@@ -22,7 +23,7 @@ auth_router.get('/google/callback',
   });
 
 //Renders login page
-auth_router.get('/login', ( req, res ) => {
+auth_router.get('/login', ensureGuest, ( req, res ) => {
     res.render("login.ejs")
 });
 
@@ -34,10 +35,12 @@ auth_router.get('/register' , ( req , res) =>{
 //API
 auth_router.post('/login' , login_controller.auth);
 auth_router.post('/create' , register_controller.create);
-auth_router.get('/logout' , (req , res) => {
+auth_router.get('/logout' , ensureAuth , (req , res) => {
     // //use passport logout
-    // req.logout();
-    // req.redirect('/auth/login');
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/auth/login');
+      });
 });
 
 

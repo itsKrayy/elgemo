@@ -1,0 +1,12 @@
+Refer to this tutorial: https://www.youtube.com/watch?v=d2RxKTKldfI&t=225s
+
+The files and folders in the video => The files implemented here:
+
+./config/passport.js                = ./server/service/passport.js
+./middleware/auth.js                = ./server/middleware/auth.js
+./models/user.js                    = ./server/models/register_model.js
+./routes/index.js                   = ./server/routes/frontpage_router.js
+./routes/user.js                    = ./server/routes/auth_router.js
+./views/dashboard.ejs               = ./views/frontpage2.ejs
+./views/login.ejs                   = ./views/login.ejs
+./app.js                            = ./server.js

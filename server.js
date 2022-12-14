@@ -11,6 +11,7 @@ const dotenv = require('dotenv'); //for environment variable
 const axios = require('axios'); //for requesting HTTP 
 const passport = require('passport'); //for verifying users
 const session = require('express-session'); //for establishing sessions
+const MongoStore = require('connect-mongo'); //for storing sessions in the MongoDB Database
 
 //APP UTILIZATION
 dotenv.config({path: '.env'}); //adding .env file
@@ -27,11 +28,24 @@ db.connect();
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    saveUninitialized: false,
+    cookie: { secure: true },
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://elgemo:elgemo123@elgemo.iyre22j.mongodb.net/mongodb?retryWrites=true&w=majority' })
   }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use((req , res , next) => {
+    if(req.isAuthenticated){
+        console.log('Now we can set global variable');
+        res.locals.user = req.user;
+        next();
+    } else {
+        console.log("Now we can set global variable");
+        res.locals.user = null;
+        next();
+    }
+})
 
 app.listen(port, ()=>{console.log("Listening to the server on http://localhost:3000")});
 

@@ -1,13 +1,11 @@
 const express = require('express');
 const user_router = express.Router();
-const user_controller = require('../controller/user_controller')
+const user_controller = require('../controller/user_controller');
+const { ensureAuth , ensureGuest } = require('../middleware/auth');
 
-user_router.get('', ( req , res ) => {
-/*     if(req.isAuthenticated){
+
+user_router.get('', ensureAuth , ( req , res ) => {
         res.render('user');
-    } else {
-        res.redirect('/login');
-    } */
 });
 
 user_router.put('/save' , (req, res) => {

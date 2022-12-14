@@ -3,11 +3,13 @@ const express = require('express');
 const frontpage_router = express.Router();
 const movieCollection = require('../model/movies_model');
 const frontpage_Controller = require('../controller/frontpage_controller');
+const { ensureAuth , ensureGuest } = require('../middleware/auth');
+
 
 frontpage_router.use(express.json());
 frontpage_router.use(express.urlencoded({extended: false}))
 
-frontpage_router.get('/', frontpage_Controller.render);
+frontpage_router.get('/', ensureAuth, frontpage_Controller.render);
 frontpage_router.post('/', frontpage_Controller.render);
 
 frontpage_router.get('/search' , frontpage_Controller.search);
