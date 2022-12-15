@@ -6,7 +6,24 @@ const { json } = require('express');
 
 exports.render = (req , res) => {
 
-    //calls the Movie API and sets the options for Axios Request
+    const options = {
+        method: 'GET',
+        url: 'https://advanced-movie-search.p.rapidapi.com/discover/movie',
+        params: {with_genres: '37', page: '1'},
+        headers: {
+            'X-RapidAPI-Key': '2c90058ceemsh83ffa0e874d6308p180c22jsn57ffa452ffd1',
+            'X-RapidAPI-Host': 'advanced-movie-search.p.rapidapi.com'
+        }
+    };
+
+    axios.request(options).then(function (response) {
+        console.log(response.data.results[0].backdrop_path);
+        res.render('frontpage2' , {movie: response.data.results});
+    }).catch(function (error) {
+        console.error(error);
+    });
+
+    /* //calls the Movie API and sets the options for Axios Request
     const options = {
         method: 'GET',
         url: 'https://moviesdatabase.p.rapidapi.com/titles/x/upcoming',
@@ -25,7 +42,7 @@ exports.render = (req , res) => {
 
     }).catch(function (error) {
         console.error(error);
-    });
+    }); */
 
 
     //OLD CODE
@@ -42,7 +59,26 @@ exports.render = (req , res) => {
 
 exports.search = (req , res) => {
 
-    console.log('here in search');
+    var keyword = req.query.search;
+
+    const options = {
+        method: 'GET',
+        url: 'https://advanced-movie-search.p.rapidapi.com/search/movie',
+        params: {query: keyword, page: '1'},
+        headers: {
+          'X-RapidAPI-Key': '2c90058ceemsh83ffa0e874d6308p180c22jsn57ffa452ffd1',
+          'X-RapidAPI-Host': 'advanced-movie-search.p.rapidapi.com'
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+        //   console.log(response.data);
+        res.render('searchpage' , {movie: response.data.results , searches: keyword});
+      }).catch(function (error) {
+          console.error(error);
+      });
+
+    /* console.log('here in search');
     var keyword = req.query.search;
     var query = keyword.replaceAll(' ' , '%20')
     var url = 'https://moviesdatabase.p.rapidapi.com/titles/search/keyword/' + query;
@@ -61,11 +97,32 @@ exports.search = (req , res) => {
         res.render('searchpage' , {movie: response.data.results , searches: keyword});
     }).catch(function (error) {
         console.error(error);
-    });
+    }); */
 };
 
 exports.view = (req , res) => {
-    console.log('viewing a movie');
+
+    var id = req.params.id;
+
+    const options = {
+        method: 'GET',
+        url: 'https://advanced-movie-search.p.rapidapi.com/movies/getdetails',
+        params: {movie_id: id},
+        headers: {
+          'X-RapidAPI-Key': '2c90058ceemsh83ffa0e874d6308p180c22jsn57ffa452ffd1',
+          'X-RapidAPI-Host': 'advanced-movie-search.p.rapidapi.com'
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+          console.log(response.data.id);
+          res.render('movie' , {movie: response.data})
+      }).catch(function (error) {
+          console.error(error);
+      });
+
+
+    /* console.log('viewing a movie');
     var id = req.params.id;
 
     var url = 'https://moviesdatabase.p.rapidapi.com/titles/' + id;
@@ -87,7 +144,7 @@ exports.view = (req , res) => {
         res.render('movie' , {movie: response.data.results})
     }).catch(function (error) {
         console.error(error);
-    });
+    }); */
 }
 
     

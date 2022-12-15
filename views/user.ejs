@@ -6,7 +6,11 @@
         <h3>Saved Movies</h3>
     </div>
     <main id="main">
-
+        <% if (movie.length < 1) { %>
+            <p>
+                No movies saved. <a href="/frontpage"> Browse Movies</a> and save your favorites!
+            </p>
+            <% } %>
     </main>
 
    <script src="js/frontpagejs.js"></script>

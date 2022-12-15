@@ -5,15 +5,15 @@ const { ensureAuth , ensureGuest } = require('../middleware/auth');
 
 
 user_router.get('', ensureGuest , ( req , res ) => {
-        res.render('user');
+        res.render('user' , {movie: "" ,searches: ""});
 });
 
-user_router.put('/save' , (req, res) => {
-   /*  if(req.isAuthenticated){
-        //******** STILL NEED TO ADD SAVE FEATURE
+user_router.get('/save' , ensureAuth , (req, res) => {
+    if(req.isAuthenticated){
+        console.log('Saved!')
     } else {
         res.redirect('/login');
-    } */
+    }
 });
 
 module.exports = { user_router };

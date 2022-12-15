@@ -18,6 +18,8 @@ dotenv.config({path: '.env'}); //adding .env file
 app.set('view engine' , 'ejs'); //setting EJS as view engine for render HTML
 app.use(express.json()); //for reading JSON requests
 app.use(express.urlencoded({extended: true})); //use to parse requests etc.
+  
+require('./server/service/passport')(passport);
 
 //DATBASE INITIALIZATION
 const db = require('./server/database/mongoose');
@@ -31,8 +33,6 @@ app.use(session({
     store: MongoStore.create({ mongoUrl: 'mongodb+srv://elgemo:elgemo123@elgemo.iyre22j.mongodb.net/mongodb?retryWrites=true&w=majority' })
   }));
 
-  
-require('./server/service/passport')(passport);
 
 app.use(passport.initialize());
 app.use(passport.session());

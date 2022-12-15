@@ -7,16 +7,20 @@
         <div class="movie-info">
             
             <div class="movie-img">
-                <img src="<%= movie.primaryImage.url %>" alt="">
+                <img src="<%= movie.poster_path %>" alt="">
             </div>
             
             <div class="movie.dets">
                 <div class="button-container">
-                    <button href="/user/save">save</button>
-                    <button>more</button>
+                    <a href="/user/save"><button>save</button></a>
+                    <a href="<%= movie.homepage %>" target="_blank"><button>more</button></a>
                 </div>
-                <p><h3>Title: </h3><%= movie.titleText.text %></p>
-                <p><h3>Movie Description: </h3></p>
+                <p><h3>Title: </h3><%= movie.title %></p>
+                <p><h3>Movie Description: </h3> <%= movie.overview %></p>
+                <p><h3>Tagline: </h3> <%= movie.tagline %></p>
+                <p><h3>Popularity: </h3> <%= movie.popularity %></p>
+                <p><h3>Vote Count: </h3> <%= movie.vote_count %></p>
+                <p><h3>Vote Average: </h3> <%= movie.vote_average %></p>
             </div>
 
             
@@ -24,13 +28,20 @@
         </div>
 
         <div class="movieiframe">
-            <iframe width="100%" height="90%" src="" 
+            <iframe width="100%" height="90%" src="https://drive.google.com/file/d/1ZR_OaD4_uBVtlgJ89gVxnr4hjGSmJU_8/preview" 
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
             </iframe>
         </div>
-        <h2>Watch <%= movie.titleText.text %> Trailer</h2>
+        <h2>Watch <%= movie.title %> Trailer</h2>
         <div class="iframe">
             <iframe src="" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+        </div>
+
+        <h2>Dummy Trailer</h2>
+        <div class="iframe">
+            <iframe src="https://www.youtube.com/watch?v=d2RxKTKldfI&t=225s" 
             frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
             </iframe>
         </div>

@@ -17,19 +17,20 @@
                 <div class="movie">
         
                     <a href="/frontpage/<%= movie[i].id %>">
-                        <img src="<% if (movie[i].primaryImage.url === null){ movie[i].titleText.text } else { movie[i].primaryImage.url } %>" alt="<%= movie[i].titleText.text %>"/>
+                        <img src="<%= movie[i].poster_path %>" alt="<%= movie[i].title %>"/>
                     </a>
                         <div class="movie-info">
-                        <h3><%= movie[i].titleText.text %></h3>
+                        <h3><%= movie[i].title %></h3>
                     </div>
                      <div class="overview">
-                    <a href="/frontpage/<%= movie[i].id %>">
-                        <h3>Overview:</h3>
-                     </a>
-                    <!-- <%= movie[i].description %> -->
-                        <button>
-                            save
-                        </button>
+                            <a href="/frontpage/<%= movie[i].id %>">
+                                <h3>Overview:</h3>
+                                <p>
+                                    <%= movie[i].overview %> 
+                                </p>
+                            </a>
+                            
+                        <a href="/user/save"><button > save </button></a>
                     </div>
                 </div>
         
