@@ -4,7 +4,7 @@ const user_controller = require('../controller/user_controller');
 const { ensureAuth , ensureGuest } = require('../middleware/auth');
 
 
-user_router.get('', ensureAuth , ( req , res ) => {
+user_router.get('', ensureGuest , ( req , res ) => {
         res.render('user');
 });
 

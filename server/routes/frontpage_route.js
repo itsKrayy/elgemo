@@ -9,7 +9,7 @@ const { ensureAuth , ensureGuest } = require('../middleware/auth');
 frontpage_router.use(express.json());
 frontpage_router.use(express.urlencoded({extended: false}))
 
-frontpage_router.get('/', ensureAuth, frontpage_Controller.render);
+frontpage_router.get('/', ensureGuest, frontpage_Controller.render);
 frontpage_router.post('/', frontpage_Controller.render);
 
 frontpage_router.get('/search' , frontpage_Controller.search);

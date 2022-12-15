@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-find-or-create');
 
 const reg_model = mongoose.Schema({
@@ -18,7 +17,7 @@ const reg_model = mongoose.Schema({
 
 });
 
-reg_model.plugin(passportLocalMongoose);
+// reg_model.plugin(passportLocalMongoose);
 reg_model.plugin(findOrCreate);
 
 

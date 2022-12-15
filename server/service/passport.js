@@ -7,84 +7,27 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: "http://localhost:3000/auth/google/callback"
   },
-   async function(accessToken, refreshToken, profile, done) {
+   async function(accessToken, refreshToken, profile, cb) {
     // console.log('Trying to access Google Account' , profile)
 
     User.findOrCreate({ googleId: profile.id , username: profile.displayName , picture: profile.photos[0].value}, function (err, user) {
-        return done(err, user);
+        // console.log(user);
+        return cb (err, user);
       });
-
-    // try {
-    //     console.log('the profile ID: ' + profile.id)
-
-    //     function verify (data) {
-    //         if(data === null){
-
-    //             console.log('CREATED NEW USER');
-    //             const newUser = new User({
-    //                 googleId: profile.id,
-    //                 name: profile.displayName,
-    //                 picture: profile.photos[0].value
-    //             });
-    //                         console.log('About to be added user: ' + newUser.googleId);
-    //             const user = User.create(newUser);
-    //                          console.log('Newly added user: ' + user.googleId);
-    //             return done(null, user);
-
-    //         } else {
-                
-    //             console.log('FALLEN IN HERE')
-    //             return done(null, data);
-                
-    //         }
-    //     };
-
-    //     User.findOne({googleId: profile.id} , function(err , data) {
-    //         if (err) {
-    //             console.log(err)
-    //         } else {
-    //             verify(data);
-    //         }
-    //     })
-
-        
-            // console.log('HEREEEEE ' + data.googleId);
-        
-        
-        /* console.log('HEREEEEE ' + user);
-        if(user){
-            console.log('FALLEN IN HERE')
-            done(null, user);
-        } else {
-            console.log('CREATED NEW USER');
-            const newUser = new User({
-                googleId: profile.id,
-                name: profile.displayName,
-                picture: profile.photos[0].value
-            });
-            user = await User.create(newUser);
-            done(null, user);
-        } */
-
-    // } catch (error) {
-    //     console.error(error)
-    // }
-
-    // User.findOrCreate({ googleId: profile.id }, function (err, user) {
-    //   return done(err, user);
-    // });
-  }
+    }
 
   
 ));
 
 passport.serializeUser(function (user, done) {
-    done(null, user.id);
+    console.log('Serializing the user..');
+    console.log('USER ID IN SERIALIZATION: ' + user.googleId);
+    return done(null, user.googleId);
 });
 
 passport.deserializeUser(function (id, done) {
     User.findById(id, function (err, user) {
-        done(err, user);
+        return done(err, user);
     });
 });
 
