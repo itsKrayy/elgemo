@@ -37,7 +37,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use((req , res , next) => {
+/* app.use((req , res , next) => {
     if(req.isAuthenticated){
         console.log('Now we can set global variable');
         res.locals.user = req.user;
@@ -47,7 +47,7 @@ app.use((req , res , next) => {
         res.locals.user = null;
         next();
     }
-})
+}) */
 
 
 
